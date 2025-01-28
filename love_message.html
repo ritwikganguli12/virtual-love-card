@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Love Card</title>
+    <style>
+        body {
+            background-color: #ffe4e6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            max-width: 400px;
+            width: 90%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            display: none; /* Image is hidden initially */
+        }
+
+        .heart {
+            font-size: 80px;
+            color: #ff6b81;
+            animation: beat 1.5s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #ff6b81;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        button {
+            background-color: #ff6b81;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ff4757;
+        }
+
+        .hidden-message {
+            display: none;
+            position: absolute;
+            top: 50%; /* Position the message directly in the middle of the image */
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the text */
+            font-size: 18px;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background for readability */
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Music Player (but initially hidden) -->
+    <audio id="backgroundMusic" loop>
+        <source src="file:///C:/Users/ritwi/Downloads/Tu%20Meri%20Dost%20Hain%20Full%20Video%20-%20Yuvvraaj%20Salman%20Khan,%20Katrina%20Kaif%20Shreya%20Ghoshal,%20BennyA.R%20Rahman-[AudioTrimmer.com].mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="card">
+        <!-- Secret message positioned on top of the image -->
+        <div class="hidden-message" id="hiddenMessage">
+            You’re the most amazing person in my life, <span id="herName">[Baby]</span>. I’m so lucky to have you. I love you to infinity and beyond! 🌟💖
+        </div>
+        
+        <!-- Add her name dynamically -->
+        <h1>Hey, <span id="Baby">Love</span>! 💖</h1>
+        
+        <div class="heart">💓</div>
+
+        <p>Here's something special just for you 💕</p>
+        
+        <!-- Reveal message button -->
+        <button id="revealButton" onclick="revealMessage()">Click to reveal my message</button>
+
+        <!-- Add an image -->
+        <img src="file:///D:/DCIM/New%20folder/Snapchat-1672107575.jpg" alt="Romantic Image" id="loveImage">
+
+    </div>
+
+    <script>
+        // Add her name dynamically
+        const herName = "Baby"; // Replace this with her actual name
+        document.getElementById('Baby').textContent = herName;
+
+        // Reveal hidden message and image
+        function revealMessage() {
+            const message = document.getElementById('hiddenMessage');
+            const image = document.getElementById('loveImage');
+            const button = document.getElementById('revealButton');
+            const audio = document.getElementById('backgroundMusic');
+            
+            // Make the hidden message visible and the image appear
+            message.style.display = 'block';
+            image.style.display = 'block'; // Show the image
+
+            // Replace the placeholder with her name in the message
+            document.getElementById('herName').textContent = herName; // Update the name in the secret message
+            
+            // Hide the button after it is clicked
+            button.style.display = 'none';
+            
+            // Play music when button is clicked
+            audio.play();
+        }
+    </script>
+</body>
+</html>
